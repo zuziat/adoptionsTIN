@@ -1,0 +1,92 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="../../../js/validationAdoptForm.js"></script>
+
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>" novalidate>
+
+        <input type="hidden" name="_id" value="<%= adopter._id %>">
+
+        <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+        <input class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : '' %>"
+               type="text" name="firstName" id="firstName" placeholder="2-60 znaków"
+               value="<%= adopter.firstName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorAdopterName" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('firstName')).message %>
+            <% } %>
+        </span>
+        <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" placeholder="2-60 znaków"
+               class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : '' %>"
+               value="<%= adopter.lastName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorLastName" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('lastName')).message %>
+            <% } %>
+        </span>
+        <label for="email">Email: <span class="symbol-required">*</span></label>
+        <input type="text" id="email" name="email" placeholder="2-60 znaków"
+               class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %>"
+               value="<%= adopter.email %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorEmail" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                <%= validationErrors.find(e => e.path.includes('email')).message %>
+            <% } %>
+        </span>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="section-buttons">
+                <a href="/Adopters/edit/<%= adopter._id %>" class="form-button-edit">Edytuj</a>
+            </div>
+        <% } %>
+
+        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <div class="details">
+                <h2>
+                    Szczegóły o adopcji
+                </h2>
+                <table class="table-list">
+                    <thead>
+                    <tr>
+                        <th>Imię zwierzęcia</th>
+                        <th>Gatunek</th>
+                        <th>Wiek</th>
+                        <th>Imię wolotariusza</th>
+                        <th>Nazwisko wolotariusza</th>
+                        <th>Email wolotariusza</th>
+                        <th>Numer telefonu wolotariusza</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% for (let a of adopter.adoptions) { %>
+                        <tr>
+                            <td data-label="Imię"><a href="/animals/details/<%= a._id %>"><%= a.animalName %></a></td>
+                            <td data-label="Gatunek"><%= a.species %></td>
+                            <td data-label="Wiek"><%= a.age %></td>
+                            <td data-label="Imię wolotariusza"><%= a.volunteer.firstName %></td>
+                            <td data-label="Nazwisko wolotariusza"><%= a.volunteer.lastName %></td>
+                            <td data-label="Email wolotariusza"><%= a.volunteer.email %></td>
+                            <td data-label="Numer telefonu wolotariusza"><%= a.volunteer.phoneNumber %></td>
+
+                        </tr>
+                    <% } %>
+                    </tbody>
+                </table>
+            </div>
+        <% } %>
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"></p>
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
+                <a class="form-button-cancel" href="/Adopters">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/Adopters">Powrót</a>
+            <% } %>
+        </div>
+    </form>
+
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

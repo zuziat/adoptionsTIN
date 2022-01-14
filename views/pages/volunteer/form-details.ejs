@@ -1,0 +1,64 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+
+    <h2>Szczegóły wolontariusza</h2>
+    <form class="form">
+        <label for="volunteerName">Imię: </label>
+        <input type="text" name="volunteerName" id="volunteerName" value="Marta" disabled>
+        <span id="errorAdopterlName"></span>
+        <label for="lastName">Nazwisko: </label>
+        <input type="text" name="nazwisko" id="nazwisko" value="Malinowska" disabled>
+        <span id="errorNazwisko"></span>
+        <label for="email">Email: </label>
+        <input type="text" id="email" name="email" value="malinkaM@op.pl" disabled>
+        <span id="errorEmail"></span>
+        <label for="phoneNumber">Numer telefonu: </label>
+        <input type="text" id="phoneNumber" name="telefon" value="555777999" disabled>
+        <span id="errorPhoneNumber"></span>
+        <a href="form-edit.html" class="form-button-edit">Edytuj</a>
+    </form>
+
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <h2>Szczegóły o adopcji</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Imię zwierzęcia</th>
+                <th>Gatunek</th>
+                <th>Wiek</th>
+                <th>Imię adoptującego</th>
+                <th>Nazwisko adoptującego</th>
+                <th>Email adoptującego</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let a of volunteer.adoptions) { %>
+                <tr>
+                    <td data-label="Imię"><a href="/animals/details/<%= a._id %>"><%= a.animalName %></a></td>
+                    <td data-label="Gatunek"><%= a.species %></td>
+                    <td data-label="wiek"><%= a.age %></td>
+                    <td data-label="Imię adoptującego"><%= a.adopter.firstName %></td>
+                    <td data-label="Nazwisko adoptującego"><%= a.adopter.lastName %></td>
+                    <td data-label="Email adoptującego"><%= a.adopter.email %></td>
+
+                </tr>
+            <% } %>
+
+            </tbody>
+
+        </table>
+    <% } %>
+    <div class="form-buttons">
+        <p id="errorsSummary" class="errors-text"></p>
+        <% if (formMode != 'showDetails') { %>
+        	<input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
+			<a class="form-button-cancel" href="/volunteers">Anuluj</a>
+        <% } else { %>
+			<a class="form-button-cancel" href="/volunteers" >Powrót</a>
+        <% } %>
+    </div>
+
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

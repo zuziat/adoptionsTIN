@@ -1,0 +1,36 @@
+<%- include('../../fragments/header.ejs') %>
+	<main>
+		<h2>Edycja adoptującego</h2>
+		<form class="form">
+			<label for="adopterName">Imię: </label>
+			<input type="text" name="adopterName" id="adopterName" value="Jan" required>
+			<span id="errorAdopterlName"></span>
+			<label for="lastName">Nazwisko: </label>
+			<input type="text" name="nazwisko" id="nazwisko" value="Kowalski" required>
+			<span id="errorNazwisko"></span>
+			<label for="email">Email: </label>
+			<input type="text" id="email" name="email" value="janKowal@op.pl" required>
+			<span id="errorEmail"></span>
+			<label for="hasAnimals">Ma zwierzęta: </label>
+			<select name="hasAnimals" id="hasAminals">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> Tak</option>
+				<option value="2"> Nie</option>
+			</select>
+			<span id="errorHasAnimals"></span>
+			<label for="hasKids">Ma dzieci: </label>
+			<select name="hasKids" id="hasKids">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> Tak</option>
+				<option value="2"> Nie</option>
+			</select>
+			<span id="errorHasKids"></span>
+			<div class="form-buttons">
+				<input type= "submit" value="Dodaj" class="form-button-submit" />
+				<a href="list.html" class="form-button-cancel">Anuluj</a>
+			</div>
+		</form>
+		
+		
+	</main>
+<%- include('../../fragments/footer.ejs') %>

@@ -1,0 +1,25 @@
+<%- include('../../fragments/header.ejs') %>
+	<main>
+		<h2>Edytuj wolontariusza</h2>
+		<form class="form">
+			<label for="volunteerName">Imię: </label>
+			<input type="text" name="volunteerName" id="volunteerName" value="Marta" required>
+			<span id="errorAdopterlName"></span>
+			<label for="lastName">Nazwisko: </label>
+			<input type="text" name="nazwisko" id="nazwisko" value="Malinowska" required>
+			<span id="errorNazwisko"></span>
+			<label for="email">Email: </label>
+			<input type="text" id="email" name="email" value="malinkaM@op.pl" required>
+			<span id="errorEmail"></span>
+			<label for="phoneNumber">Numer telefonu: </label>
+			<input type="text" id="phoneNumber" name="telefon" value="555777999" >
+			<span id="errorPhoneNumber"></span>
+			<div class="form-buttons">
+				<input type= "submit" value="Dodaj" class="form-button-submit"/>
+				<a href="list.html" class="form-button-cancel">Anuluj</a>
+			</div>
+
+		</form>
+		
+	</main>
+<%- include('../../fragments/footer.ejs') %>

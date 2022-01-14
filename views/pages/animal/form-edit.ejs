@@ -1,0 +1,57 @@
+<%- include('../../fragments/header.ejs') %>
+	<main>
+		<h2>Edycja zwierzęcia</h2>
+		<form class="form">
+			<label for="animalName">Imię: </label>
+			<input type="text" name="animalName" id="animalName" value="Gałgan" required>
+			<span id="errorAnimalName"></span>
+			<label for="species">Gatunek: </label>
+			<select name="spcies" id="species">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> Kot</option>
+				<option value="2"> Pies</option>
+				<option value="3"> Królik</option>
+				
+			</select>
+			<span id="errorSpecies"></span>
+			<label for="birthDate">Data Urodzenia: </label>
+			<input type="date" name="birtDate" id="birthDate" value="2017-10-08" required>
+			<span id="errorBirtDate"></span>
+			<label for="age">Wiek: </label>
+			<input type="text" name="age" id="age" value="4" required>
+			<span id="errorAge"></span>
+			<label for="kidFriendly">Odpowiedni dla domu z dziećmi: </label>
+			<select name="kidFriendly" id="kidFriendly">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> Tak</option>
+				<option value="2"> Nie</option>
+			</select>
+			<span id="errorKidFriendly"></span>
+			<label for="volunteerId">Wolontariusz: </label>
+			<select name="volunteerId" id="volunteerId">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> v01</option>
+				<option value="2"> v02</option>
+				<option value="3"> v03</option>
+				
+			</select>
+			<span id="errorVolunteerId"></span>
+			<label for="adopterId">Adoptujący: </label>
+			<select name="adopterId" id="adopterId">
+				<option disabled selected value> -- wybierz opcję -- </option>
+				<option value="1"> a01</option>
+				<option value="2"> a02</option>
+				<option value="3"> a03</option>
+				
+			</select>
+			<span id="errorAdopterId"></span>
+			<div class="form-buttons">
+				<input type= "submit" value="Dodaj" class="form-button-submit" />
+				<a href="list.html" class="form-button-cancel">Anuluj</a>
+			</div>
+			
+		</form>
+		
+		
+	</main>
+<%- include('../../fragments/footer.ejs') %>

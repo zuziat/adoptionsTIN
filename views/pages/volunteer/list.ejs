@@ -1,0 +1,43 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista Wolontariuszy</h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>email</th>
+            <th>numer telefonu</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let volunteer of volunteers) { %>
+            <tr>
+                <td><%= volunteer.volFirstName %></td>
+                <td><%= volunteer.volLastName %></td>
+                <td><%= volunteer.volEmail %></td>
+                <td><%= volunteer.phoneNumber %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="/volunteers/details/<%= volunteer._id %>" class="list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="/volunteers/edit/<%= volunteer._id %>" class="list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="/volunteers/delete/<%= volunteer._id %>"
+                               class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+
+    <p><a href="/volunteers/add" class="button-add">Dodaj nowego wolontariusza</a></p>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>
