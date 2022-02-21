@@ -1,0 +1,46 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2>Lista Zwierząt</h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th>Imię</th>
+            <th>Gatunek</th>
+            <th>Data urodzenia</th>
+            <th>Wiek</th>
+            <th>Odpowiedni do domu z dziećmi</th>
+            <th>Akcje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let animal of animals) { %>
+            <tr>
+                <td><%= animal.animalName %></td>
+                <td><%= animal.species %></td>
+                <td><%= animal.birthDate.toISOString().split('T')[0] %></td>
+                <td><%= animal.age %></td>
+                <td><%= animal.kidFriendly %></td>
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="/animals/details/<%= animal._id %>"
+                               class="list-actions-button-details">Szczegóły</a>
+                        </li>
+                        <li>
+                            <a href="/animals/edit/<%= animal._id %>" class="list-actions-button-edit">Edytuj</a>
+                        </li>
+                        <li>
+                            <a href="/animals/delete/<%= animal._id %>" class="list-actions-button-delete">Usuń</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        <% } %>
+        </tbody>
+    </table>
+
+    <p><a href="/animals/add" class="button-add">Dodaj nowe zwierzę</a></p>
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

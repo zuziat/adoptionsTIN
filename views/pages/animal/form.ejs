@@ -1,0 +1,174 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+
+    <script type="application/javascript" src="../../../js/validationAnimalForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%= formAction %>" novalidate>
+
+        <input type="hidden" name="_id" value="<%= animal._id %>">
+
+
+        <label for="animalName">Imię: <span class="symbol-required">*</span></label>
+        <input class="<%= validationErrors.find(e => e.path.includes('animalName')) ? 'error-input' : '' %>"
+                type="text" name="animalName" id="animalName" placeholder="2-35 znaków"
+               value="<%= animal.animalName %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorAnimalName" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('animalName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('animalName')).message %>
+            <% } %>
+        </span>
+        <label for="species">Gatunek: <span class="symbol-required">*</span></label>
+        <input type="text" name="species" id="species"
+               class="<%= validationErrors.find(e => e.path.includes('species')) ? 'error-input' : '' %>"
+               value="<%= animal.species %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorSpecies" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('species'))) { %>
+                <%= validationErrors.find(e => e.path.includes('species')).message %>
+            <% } %>
+        </span>
+        <label for="birthDate">Data Urodzenia: </label>
+        <input type="date" id="birthDate" name="birthDate"
+               class="<%= validationErrors.find(e => e.path.includes('birthDate')) ? 'error-input' : '' %>"
+               value="<%= animal.birthDate %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorBirthDate" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('birthDate'))) { %>
+                <%= validationErrors.find(e => e.path.includes('birthDate')).message %>
+            <% } %>
+        </span>
+        <label for="age">Wiek: <span class="symbol-required">*</span></label>
+        <input type="text" name="age" id="age"
+               class="<%= validationErrors.find(e => e.path.includes('age')) ? 'error-input' : '' %>"
+               value="<%= animal.age %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorAge" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('age'))) { %>
+                <%= validationErrors.find(e => e.path.includes('age')).message %>
+            <% } %>
+        </span>
+        <label for="kidFriendly">Odpowiedni dla domu z dziećmi: <span class="symbol-required">*</span></label>
+        <input type="text" id="kidFriendly" name="kidFriendly" placeholder="TAK/NIE"
+               class="<%= validationErrors.find(e => e.path.includes('kidFriendly')) ? 'error-input' : '' %>"
+               value="<%= animal.kidFriendly %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> />
+        <span id="errorKidFriendly" class="errors-text">
+            <% if (validationErrors.find(e => e.path.includes('kidFriendly'))) { %>
+                <%= validationErrors.find(e => e.path.includes('kidFriendly')).message %>
+            <% } %>
+        </span>
+
+        <% if (formMode == 'createNew' || formMode == 'edit' ) { %>
+
+            <label for="vol_id">Wolontariusz: <span class="symbol-required">*</span></label>
+            <select name="vol_id" id="vol_id" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                    class="<%= validationErrors.find(e => e.path.includes('vol_id')) ? 'error-input' : '' %>">
+                <option value="" selected> -- wybierz opcję --</option>
+                <% for (let i = 0; i < allVols.length; i++){ let vol = allVols[i]; %>
+                <option value="<%= vol._id %>" label="<%= vol.volFirstName + ' ' + vol.volLastName %>"
+                        <%= (animal._id && vol._id.toString() == animal.volunteer._id.toString()) ? 'selected' : '' %>></option>
+                <% } %>
+            </select>
+            <span id="errorVolunteerId" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('vol_id'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('vol_id')).message %>
+                <% } %>
+            </span>
+
+            <label for="adopt_id">Adoptujący: <span class="symbol-required">*</span></label>
+            <select name="adopt_id" id="adopt_id" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                    class="<%= validationErrors.find(e => e.path.includes('adopt_id')) ? 'error-input' : '' %>">
+                <option value="" selected> -- wybierz opcję --</option>
+                <% for (let i = 0; i < allAdopts.length; i++){ let adopt = allAdopts[i]; %>
+                <option value="<%= adopt._id %>" label="<%= adopt.firstName + ' ' + adopt.lastName %>"
+                        <%= (animal._id && adopt._id.toString() == animal.adopter._id.toString()) ? 'selected' : '' %>></option>
+
+                <% } %>
+            </select>
+            <span id="errorAdopterId" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('adopt_id'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('adopt_id')).message %>
+                <% } %>
+            </span>
+
+        <% } else { %>
+
+            <label for="vol_id">Wolontariusz: <span class="symbol-required">*</span></label>
+            <input type="text" name="vol_id" id="vol_id" value="<%= animal.volunteer._id %>"
+                    <%= (formMode == 'details') ? 'disabled' : '' %>/>
+
+            <span id="errorVolunteerId" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('vol_id'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('vol_id')).message %>
+                <% } %>
+            </span>
+
+            <label for="adopt_id">Adoptujący: <span class="symbol-required">*</span></label>
+            <input type="text" name="adopt_id" id="adopt_id" value="<%= animal.adopter._id %>"
+                    <%= (formMode == 'details') ? 'disabled' : '' %>/>
+            <span id="errorAdopterId" class="errors-text">
+                <% if (validationErrors.find(e => e.path.includes('adopt_id'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('adopt_id')).message %>
+                <% } %>
+            </span>
+        <% } %>
+
+        </select>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="section-buttons">
+                <a href="/animals/edit/<%= animal._id %>" class="form-button-edit">Edytuj</a>
+            </div>
+        <% } %>
+
+        <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+            <div class="details">
+                <h2>
+                    Szczegóły o adopcji
+                </h2>
+                <table class="table-list">
+                    <thead>
+                    <tr>
+
+                        <th>Imię Wolontariusza</th>
+                        <th>Nazwisko Wolontariusza</th>
+                        <th>email wolontariusza</th>
+                        <th>Numer telefonu wolotariusza</th>
+
+                        <th>Imię adoptującego</th>
+                        <th>Nazwisko adoptującego</th>
+                        <th>email adoptującego</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td data-label="Imię Wolontariusza"><a
+                                    href="/volunteers/details/<%= animal.volunteer._id %>"><%= animal.volunteer.firstName %></a>
+                        </td>
+                        <td data-label="Nazwisko Wolontariusza"><%= animal.volunteer.lastName %></td>
+                        <td data-label="email wolontariusza"><%= animal.volunteer.email %></td>
+                        <td data-label="Numer telefonu wolotariusza"><%= animal.volunteer.phoneNumber %></td>
+
+                        <td data-label="Imię adoptującego"><a
+                                    href="/Adopters/details/<%= animal.adopter._id %>"><%= animal.adopter.firstName %></a>
+                        </td>
+                        <td data-label="Nazwisko adoptującego"><%= animal.adopter.lastName %></td>
+                        <td data-label="email adoptująceg"><%= animal.adopter.email %></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <% } %>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"></p>
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
+                <a class="form-button-cancel" href="/animals">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/animals">Powrót</a>
+            <% } %>
+        </div>
+    </form>
+
+
+</main>
+<%- include('../../fragments/footer.ejs') %>

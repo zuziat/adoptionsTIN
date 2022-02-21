@@ -106,3 +106,53 @@ exports.deleteVolunteer = (volId) => {
         });
 };
 
+exports.findByEmail = (email) => {
+    const query = 'SELECT  vol._id as _id,  vol.volFirstName, vol.volLastName, vol.volEmail, vol.phoneNumber, vol.password, ' +
+        'a._id as a_id, a.animalName, a.species, a.birthDate, a.age, a.kidFriendly, adopt._id as adopt_id, adopt.firstName, adopt.lastName, adopt.email ' +
+        'FROM Volunteer vol ' +
+        'left join Animal a on a.vol_id = vol._id ' +
+        'left join Adopter adopt on a.adopt_id = adopt._id ' +
+        'where vol.volEmail = ?'
+    return db.promise().query(query, [email])
+        .then((results, fields) => {
+            const firstRow = results [0][0];
+            if (!firstRow) {
+                return {};
+            }
+            const volunteer = {
+                _id: firstRow._id,
+                firstName: firstRow.volFirstName,
+                lastName: firstRow.volLastName,
+                email: firstRow.volEmail,
+                phoneNumber: firstRow.phoneNumber,
+                password: firstRow.password,
+                adoptions: []
+            }
+            for (let i = 0; i < results[0].length; i++) {
+                const row = results[0][i];
+                if (row.a_id) {
+                    const adoption = {
+                        _id: row.a_id,
+                        animalName: row.animalName,
+                        species: row.species,
+                        adopter: {
+                            _id: row.adopt_id,
+                            firstName: row.firstName,
+                            lastName: row.lastName,
+                            email: row.email
+                        }
+
+                    };
+                    volunteer.adoptions.push(adoption);
+                }
+            }
+
+
+            return volunteer;
+        })
+        .catch(err => {
+            console.log(err);
+            throw err;
+        })
+}
+

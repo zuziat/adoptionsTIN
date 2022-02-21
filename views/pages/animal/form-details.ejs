@@ -1,0 +1,54 @@
+<%- include('../../fragments/header.ejs') %>
+	<main>
+		<h2>Szczegóły Zwierzęcia</h2>
+		<form class="form">
+			<label for="animalName">Imię: </label>
+			<input type="text" name="animalName" id="animalName" value="Gałgan" disabled>
+			<span id="errorAnimalName"></span>
+			<label for="species">Gatunek: </label>
+			<input type="text" id="species" name="species" value="Kot" disabled>
+			<span id="errorSpecies"></span>
+			<label for="birthDate">Data Urodzenia: </label>
+			<input type="date" name="birtDate" id="birthDate" value="2017-10-08" disabled>
+			<span id="errorBirtDate"></span>
+			<label for="age">Wiek: </label>
+			<input type="text" name="age" id="age" value="4" disabled>
+			<span id="errorAge"></span>
+			<label for="kidFriendly">Odpowiedni dla domu z dziećmi: </label>
+			<input type="text" name="kidFriendly" id="kidFriendly" value="Tak" disabled>
+			<span id="errorKidFriendly"></span>
+			
+			<a href="form-edit.html" class="form-button-edit">Edytuj</a>
+			
+		</form>
+		<h2>Szczegóły o adopcji</h2>
+		<table class="table-list">
+			<thead>
+				<tr>
+					<th>Id Wolontariusza </th>
+					<th>Imię Wolontariusza</th>
+					<th>email wolontariusza</th>
+					<th>Id adoptującego</th>
+					<th>Nazwisko adoptującego</th>
+					<th>email adoptującego</th>
+					
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td data-label="Id Wolontariusza">v03</td>
+				<td data-label="Imię Wolontariusza">Marta</td>
+				<td data-label="email Wolontariusza">malinkaM@op.pl</td>
+				<td data-label="Id adoptującego">a2987</td>
+				<td data-label="Nazwisko adoptującego">Kowalski</td>
+				<td data-label="email adoptującego">janKowal@op.pl</td>
+			</tr>
+		</tbody>
+	
+		</table>
+		
+		
+		<p><a href="list.html" class="button-back">Powrót</a></p>
+		
+	</main>
+<%- include('../../fragments/footer.ejs') %>

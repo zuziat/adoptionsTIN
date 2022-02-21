@@ -1,7 +1,7 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
 
-    <h2>Szczegóły wolontariusza</h2>
+    <h2><%= __('vol.form.details.pageTitle') %></h2>
     <form class="form">
         <label for="volunteerName">Imię: </label>
         <input type="text" name="volunteerName" id="volunteerName" value="Marta" disabled>
@@ -15,7 +15,7 @@
         <label for="phoneNumber">Numer telefonu: </label>
         <input type="text" id="phoneNumber" name="telefon" value="555777999" disabled>
         <span id="errorPhoneNumber"></span>
-        <a href="form-edit.html" class="form-button-edit">Edytuj</a>
+        <a href="form-edit.html" class="form-button-edit"><%= __('form.actions.edit') %></a>
     </form>
 
     <% if (formMode == 'showDetails' || formMode == 'edit') { %>
@@ -53,9 +53,9 @@
         <p id="errorsSummary" class="errors-text"></p>
         <% if (formMode != 'showDetails') { %>
         	<input class="form-button-submit" type="submit" value="<%= btnLabel %>"/>
-			<a class="form-button-cancel" href="/volunteers">Anuluj</a>
+			<a class="form-button-cancel" href="/volunteers"><%= __('form.actions.cancel') %></a>
         <% } else { %>
-			<a class="form-button-cancel" href="/volunteers" >Powrót</a>
+			<a class="form-button-cancel" href="/volunteers" ><%= __('form.actions.cancel') %></a>
         <% } %>
     </div>
 

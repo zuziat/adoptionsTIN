@@ -1,14 +1,14 @@
 <%- include('../../fragments/header.ejs') %>
 <main>
-    <h2>Lista Wolontariuszy</h2>
+    <h2><%= __('vol.list.title') %></h2>
     <table class="table-list">
         <thead>
         <tr>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>email</th>
-            <th>numer telefonu</th>
-            <th>Akcje</th>
+            <th><%= __('vol.fields.firstName') %></th>
+            <th><%= __('vol.fields.lastName') %></th>
+            <th><%= __('vol.fields.email') %></th>
+            <th><%= __('vol.fields.phoneNumber') %></th>
+            <th><%= __('list.actions.title') %></th>
         </tr>
         </thead>
         <tbody>
@@ -21,14 +21,14 @@
                 <td>
                     <ul class="list-actions">
                         <li>
-                            <a href="/volunteers/details/<%= volunteer._id %>" class="list-actions-button-details">Szczegóły</a>
+                            <a href="/volunteers/details/<%= volunteer._id %>" class="list-actions-button-details"><%= __('list.actions.details') %></a>
                         </li>
                         <li>
-                            <a href="/volunteers/edit/<%= volunteer._id %>" class="list-actions-button-edit">Edytuj</a>
+                            <a href="/volunteers/edit/<%= volunteer._id %>" class="list-actions-button-edit"><%= __('list.actions.edit') %></a>
                         </li>
                         <li>
                             <a href="/volunteers/delete/<%= volunteer._id %>"
-                               class="list-actions-button-delete">Usuń</a>
+                               class="list-actions-button-delete"><%= __('list.actions.delete') %></a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
         </tbody>
     </table>
 
-    <p><a href="/volunteers/add" class="button-add">Dodaj nowego wolontariusza</a></p>
+    <p><a href="/volunteers/add" class="button-add"><%= __('vol.list.addNew') %></a></p>
 
 </main>
 <%- include('../../fragments/footer.ejs') %>

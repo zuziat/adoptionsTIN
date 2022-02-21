@@ -1,0 +1,67 @@
+{
+	"main-page": {
+		"content": "Main Page"
+	},
+	"nav": {
+		"main-page": "Main page",
+		"animals": "Animals",
+		"volunteers": "Volunteers",
+		"Adopters": "Adopters"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
+	"vol": {
+		"fields": {
+			"firstName": "First name",
+			"lastName": "Last name",
+			"email": "Email",
+			"phoneNumber": "Phone number"
+		},
+		"list": {
+			"title": "Volunteers",
+			"addNew": "Add new volunteer",
+			"noData": "No volunteer in database",
+			"pageTitle": "List of volunteer"
+		},
+		"form": {
+			"employment": "History of employment",
+			"add": {
+				"pageTitle": "Adding a new volunteer",
+				"btnLabel": "Add the volunteer",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The new volunteer has been successfully created"
+				}
+			},
+			"edit": {
+				"pageTitle": "Editing a volunteer",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Confirmation",
+					"text": "The volunteer has been successfully updated"
+				}
+			},
+			"details": {
+				"pageTitle": "Volunteer details",
+				"btnLabel": "Save changes",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pracownika"
+				}
+			}
+		}
+	}
+}

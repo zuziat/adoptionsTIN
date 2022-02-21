@@ -1,0 +1,68 @@
+{
+	"main-page": {
+		"content": "Strona główna"
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"volunteers": "Wolontariusze",
+		"animals": "Zwierzęta",
+		"Adopters": "Adoptujący"
+
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj"
+		}
+	},
+	"vol": {
+		"fields": {
+			"firstName": "Imię",
+			"lastName": "Nazwisko",
+			"email": "Email",
+			"phoneNumber": "Numer telefonu"
+		},
+		"list": {
+			"title": "Wolontariusze",
+			"addNew": "Dodaj nowego wolontariusza",
+			"noData": "Brak wolontariuszy w bazie",
+			"pageTitle": "Lista wolontariuszy"
+		},
+		"form": {
+			"employment": "Historia zatrudnienia",
+			"add": {
+				"pageTitle": "Dodawanie wolontariusza",
+				"btnLabel": "Dodaj wolontariusza",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie dodano wolontariusza"
+				}
+			},
+			"edit": {
+				"pageTitle": "Edycja wolontariusza",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pracownika"
+				}
+			},
+			"details": {
+				"pageTitle": "Szczegóły wolontariusza",
+				"btnLabel": "Zapisz zmiany",
+				"confirm": {
+					"header": "Potwierdzenie operacji",
+					"text": "Pomyślnie zaktualizowano pracownika"
+				}
+			}
+		}
+	}
+}

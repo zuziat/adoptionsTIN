@@ -14,10 +14,17 @@
     <img src="../../images/logo.png" alt="PUPIL Logo">
 </header>
 <nav>
+
     <ul>
-        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
-        <li><a href="/animals" class="<%= navLocation == 'animal' ? 'active' : ''%>">Zwierzęta</a></li>
-        <li><a href="/volunteers" class="<%= navLocation == 'volunteers' ? 'active' : ''%>">Wolontariusze</a></li>
-        <li><a href="/Adopters" class="<%= navLocation == 'Adopters' ? 'active' : ''%>">Adoptujący</a></li>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : '' %>"><%= __('nav.main-page') %></a></li>
+        <li><a href="/animals" class="<%= navLocation == 'animal' ? 'active' : '' %>"><%= __('nav.animals') %></a></li>
+        <li><a href="/volunteers" class="<%= navLocation == 'volunteers' ? 'active' : '' %>"><%= __('nav.volunteers') %></a></li>
+        <li><a href="/Adopters" class="<%= navLocation == 'Adopters' ? 'active' : '' %>"><%= __('nav.Adopters') %></a></li>
+        <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a></li>
+        <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a></li>
+
     </ul>
+
+
 </nav>
+
